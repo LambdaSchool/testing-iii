@@ -40,14 +40,14 @@ describe('<Display/>', () => {
    it('should display closed and locked', () => {
       const { getByText } = render(<Display closed={true} locked={true} />);
       const closed = getByText(/closed/i);
-      const locked = getByText(/locked/i);
+      const locked = getByText('Locked');
       expect(closed).toHaveTextContent(/closed/i);
       expect(locked).toHaveTextContent(/locked/i);
    });
    it('should use red-led when closed and locked', () => {
       const { getByText } = render(<Display closed={true} locked={true} />);
       const closed = getByText(/closed/i);
-      const locked = getByText(/locked/i);
+      const locked = getByText('Locked');
       expect(closed).toHaveClass('red-led');
       expect(locked).toHaveClass('red-led');
    });
