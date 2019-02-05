@@ -1,8 +1,10 @@
 // Test away!
 import React from 'react';
-import {render} from 'react-testing-library';
+import {render, cleanup} from 'react-testing-library';
 import 'jest-dom/extend-expect';
 import Display from './Display';
+
+afterEach(cleanup);
 
 it('checks to see if Display renders without crashing', () =>{
     const component = render(<Display />);
