@@ -9,4 +9,8 @@ describe('renders without crashing', () => {
     render(<Dashboard />)
   })
 
+  test('shows the controls and display', () => {
+    
+  })
+
 })

@@ -9,4 +9,20 @@ describe('renders without crashing', () => {
     render(<Controls />)
   })
 
+  test('provides buttons to toggle the closed and locked states', () => {
+
+  })
+
+  test('changes the button text when clicked, to reflect the state of the door', () => {
+
+  })
+
+  test('disables the closed toggle button when the gate is closed', () => {
+
+  })
+
+  test('it disables the locked toggle button when gate is open', () => {
+
+  })
+
 })
