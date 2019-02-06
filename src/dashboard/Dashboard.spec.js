@@ -16,5 +16,41 @@ describe('The Dashboard Component', () => {
       ReactDOM.render(<Dashboard />, div);
       ReactDOM.unmountComponentAtNode(div);
     });
+
+    it ('displays Close Gate/Open Gate When Clicked', () => {
+        const component = render(<Dashboard />);
+
+        const CLOSEGATE = component.getByText('Close Gate')
+        const CLOSE = component.getByText('Open')
+        const LOCKGATE = component.getByText('Lock Gate')
+
+        expect(LOCKGATE).toBeDisabled()
+
+        fireEvent.click(CLOSEGATE)
+        expect(CLOSEGATE.innerHTML).toBe('Open Gate')
+        expect(CLOSE.innerHTML).toBe('Closed')
+
+        fireEvent.click(CLOSEGATE)
+        expect(CLOSEGATE.innerHTML).toBe('Close Gate')
+
+    })
+
+    it ('displays Close Gate/Open Gate When Clicked', () => {
+        const component = render(<Dashboard />);
+
+        const CLOSEGATE = component.getByText('Close Gate')
+        const UNLOCK = component.getByText('Unlocked')
+        const LOCKGATE = component.getByText('Lock Gate')
+
+        fireEvent.click(CLOSEGATE)
+        fireEvent.click(LOCKGATE)
+
+        expect(UNLOCK.innerHTML).toBe('Locked')
+        expect(LOCKGATE.innerHTML).toBe('Unlock Gate')
+        expect(CLOSEGATE).toBeDisabled()
+
+
+    })
+  
   
   })
