@@ -1,9 +1,12 @@
 import React from "react";
-import { render, fireEvent } from "react-testing-library";
-import "jest-dom/extend-expect";
+import ReactDOM from "react-dom";
 
 import Dashboard from "./Dashboard";
 
 describe("DASHBOARD", () => {
-  it("Render Display and Controls", () => {});
+  it("Render Display and Controls", () => {
+    const div = document.createElement("div");
+    ReactDOM.render(<Dashboard />, div);
+    ReactDOM.unmountComponentAtNode(div);
+  });
 });
