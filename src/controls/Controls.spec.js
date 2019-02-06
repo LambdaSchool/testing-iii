@@ -22,8 +22,8 @@ describe("the display component", () => {
       it("defaults to open and unlocked", () => {
          const {getByText} = render(<Controls />);
    
-         getByText(/close gate/i)
-         getByText(/lock gate/i)
+         getByText(/close/i)
+         getByText(/lock/i)
       });
    })
    describe("standard view of UI", () => {
@@ -56,26 +56,44 @@ describe("the display component", () => {
       it("unlocks gate on button click", () => {
          const {getByText} = render(<Controls locked={true} closed={true}/>);
    
-         const button = getByText(/unlock gate/i);
+         //unlock gate button
+         const button = getByText(/unlock/i);
          fireEvent.click(button);
+
+         //text change
          getByText(/lock/i);
          getByText(/open/i);
       });
       it("locks gate on button click", () => {
          const {getByText} = render(<Controls locked={false} closed={true}/>);
    
-         const button = getByText(/lock gate/i);
+      //lock gate
+         const button = getByText(/lock/i);
          fireEvent.click(button);
-         getByText(/lock/i);
-         getByText(/open/i);
-      })
-      it("open gate on click", () => {
+         
+      //text change
+         getByText(/unlock/i);
+      });
+      it("close gate on click", () => {
          const {getByText} = render(<Controls locked={false} closed={false}/>);
-   
+      
+      //close gate
          const button = getByText(/close/i);
          fireEvent.click(button);
+
+      //text change
          getByText(/open/i);
-         getByText(/lock/i)
-      })
-   })
+         getByText(/lock/i);
+      });
+      it("open gate on click", () => {
+         const {getByText} = render(<Controls locked={true} closed={true}/>);
+      
+      //close gate
+         const button = getByText(/open/i);
+         fireEvent.click(button);
+
+      //text change
+         getByText(/close/i);
+      });
+   });
 });
