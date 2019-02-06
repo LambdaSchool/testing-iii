@@ -14,18 +14,68 @@ import Controls from "./Controls";
 
 afterEach(cleanup);
 describe("the display component", () => {
-   it("renders the display", () => {
-      render(<Controls />)
-   });
-   it("closes gate on click", () => {
-      const {getByText, getByTestId} = render (<Controls />);
+   afterEach(cleanup);
+   describe("general rendering", () => {
+      it("renders the display", () => {
+         render(<Controls />)
+      });
+      it("defaults to open and unlocked", () => {
+         const {getByText} = render(<Controls />);
+   
+         getByText(/close gate/i)
+         getByText(/lock gate/i)
+      });
+   })
+   describe("standard view of UI", () => {
+      it("locked and closed gate", () => {
+         const {getByText} = render(<Controls locked={true} closed={true}/>);
 
-      const button = getByText(/close gate/i);
-      fireEvent.click(button);
+         getByText(/unlock/i);
+
+      //test disable toggle for open button
+         const button = getByText(/open/i);
+         expect(button.disabled).toEqual(true);
+      });
+      it("unlocked and closed gate", () => {
+         const {getByText} = render(<Controls locked={false} closed={true}/>);
+
+         getByText(/lock/i);
+         getByText(/open/i);
+      })
+      it("open gate", () => {
+         const {getByText} = render(<Controls locked={false} closed={false}/>);
+
+         getByText(/close/i);
+      
+      //test disable for lock button
+         const button = getByText(/lock/i);
+         expect(button.disabled).toEqual(true);
+      })
+   })
+   describe("button click actions", () => {
+      it("unlocks gate on button click", () => {
+         const {getByText} = render(<Controls locked={true} closed={true}/>);
    
-   //buttons should change to this
-      getByText(/lock gate/i)
-      // getByText(/open gate/i)
-   });
+         const button = getByText(/unlock gate/i);
+         fireEvent.click(button);
+         getByText(/lock/i);
+         getByText(/open/i);
+      });
+      it("locks gate on button click", () => {
+         const {getByText} = render(<Controls locked={false} closed={true}/>);
    
+         const button = getByText(/lock gate/i);
+         fireEvent.click(button);
+         getByText(/lock/i);
+         getByText(/open/i);
+      })
+      it("open gate on click", () => {
+         const {getByText} = render(<Controls locked={false} closed={false}/>);
+   
+         const button = getByText(/close/i);
+         fireEvent.click(button);
+         getByText(/open/i);
+         getByText(/lock/i)
+      })
+   })
 });
