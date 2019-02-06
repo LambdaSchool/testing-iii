@@ -25,5 +25,9 @@
   "devDependencies": {
     "jest-dom": "^3.0.1",
     "react-testing-library": "^5.4.4"
-  }
+  },
+  "main": "index.js",
+  "repository": "https://github.com/LeviApp/testing-iii.git",
+  "author": "Levi Appenfelder <levi.appenfelder@gmail.com>",
+  "license": "MIT"
 }
