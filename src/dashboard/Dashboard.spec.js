@@ -10,6 +10,7 @@ describe('renders without crashing', () => {
   })
 
   test('shows the controls and display', () => {
+    const component = render(<Dashboard />);
     
   })
 
