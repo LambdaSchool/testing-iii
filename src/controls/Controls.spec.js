@@ -52,48 +52,4 @@ describe("the display component", () => {
          expect(button.disabled).toEqual(true);
       })
    })
-   describe("button click actions", () => {
-      it("unlocks gate on button click", () => {
-         const {getByText} = render(<Controls locked={true} closed={true}/>);
-   
-         //unlock gate button
-         const button = getByText(/unlock/i);
-         fireEvent.click(button);
-
-         //text change
-         getByText(/lock/i);
-         getByText(/open/i);
-      });
-      it("locks gate on button click", () => {
-         const {getByText} = render(<Controls locked={false} closed={true}/>);
-   
-      //lock gate
-         const button = getByText(/lock/i);
-         fireEvent.click(button);
-         
-      //text change
-         getByText(/unlock/i);
-      });
-      it("close gate on click", () => {
-         const {getByText} = render(<Controls locked={false} closed={false}/>);
-      
-      //close gate
-         const button = getByText(/close/i);
-         fireEvent.click(button);
-
-      //text change
-         getByText(/open/i);
-         getByText(/lock/i);
-      });
-      it("open gate on click", () => {
-         const {getByText} = render(<Controls locked={true} closed={true}/>);
-      
-      //close gate
-         const button = getByText(/open/i);
-         fireEvent.click(button);
-
-      //text change
-         getByText(/close/i);
-      });
-   });
 });
