@@ -16,8 +16,8 @@ describe("CONTROLS", () => {
     expect(closeButton).toHaveTextContent(/close gate/i);
   });
 
-  it("Close gate button becomes open gate button when clicked.", () => {
-    const { getByText } = render(<Controls closed={false} locked={false} />);
+  it("Show open button when closed button is clicked.", () => {
+    const { getByText } = render(<Controls closed={true} locked={false} />);
     const closeButton = getByText(/close gate/i);
 
     fireEvent.click(closeButton);
@@ -25,5 +25,15 @@ describe("CONTROLS", () => {
     const openButton = getByText(/open gate/i);
 
     expect(openButton).toHaveTextContent(/open gate/i);
+  });
+  
+  it("Show closed button when open button is clicked.", () => {
+    const { getByText } = render(<Controls />);
+    const openedButton = getByText(/open gate/i);
+
+    fireEvent.click(openedButton);
+
+    const closedButton = getByText(/close gate/i);
+    expect(closedButton).toHaveTextContent(/close gate/i);
   });
 });
