@@ -11,14 +11,14 @@ import Display from "./Display";
      expect(tree.toJSON()).toMatchSnapshot();
   });
 
-   it("displays a message when 'speak' button is clicked", () => {
-    const speak = jest.fn();
-    let messageMock = "";
+//    it("displays a message when 'speak' button is clicked", () => {
+//     const speak = jest.fn();
+//     let messageMock = "";
 
-     const { getByText } = render(<Display speak={speak} message={messageMock} />);
+//      const { getByText } = render(<Display speak={speak} message={messageMock} />);
 
-     fireEvent.click(getByText(/speak/i));
+//      fireEvent.click(getByText(/speak/i));
 
-     expect(speak).toHaveBeenCalled();
-  });
+//      expect(speak).toHaveBeenCalled();
+//   });
 });
