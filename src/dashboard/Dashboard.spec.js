@@ -5,7 +5,7 @@ import renderer from 'react-test-renderer';
 import Dashboard from './Dashboard';
 import { render, fireEvent } from "@testing-library/react";
 
-describe('Dashboard />', () => {
+describe('<Dashboard />', () => {
     it('should match snapshot', () => {
       const tree = renderer.create(<Dashboard />).toJSON();
   
@@ -31,4 +31,13 @@ describe('Dashboard />', () => {
       getByText(/Lock Gate/);
       getByText(/Close Gate/);
     });
+    it('buttons text changes to reflect the state the door will be in if clicked', () => {
+      const {getByText} = render(<Dashboard />);
+      const lockButton = getByText (/Lock Gate/);
+      const closeButton = getByText (/Close Gate/);
+      fireEvent.click(closeButton);
+      getByText(/Open Gate/);
+      fireEvent.click(lockButton);
+      getByText(/Unlock Gate/);
+    }); 
   });
