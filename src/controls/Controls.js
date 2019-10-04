@@ -1,6 +1,8 @@
 import React from 'react';
 
 const Controls = props => {
+  console.log('controls props', props);
+  
   const { locked, closed, toggleLocked, toggleClosed } = props;
 
   return (
