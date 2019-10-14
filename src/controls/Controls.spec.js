@@ -43,3 +43,23 @@ test('Locked and Closed: Open Gate button is disabled', () => {
     const closeButton = container.getByText(/Open Gate/i)
     expect(closeButton.getAttribute('disabled')).not.toBeNull()
 })
+
+test('Unlocked and Closed: Lock Gate button click calls toggleLocked', () => {
+    const toggleLocked = jest.fn()
+    const toggleClosed = jest.fn()
+    const container = render(<Controls locked={false} closed={true} toggleLocked={toggleLocked} toggleClosed={toggleClosed} />)
+    const lockButton = container.getByText(/Lock Gate/i)
+    fireEvent.click(lockButton)
+    expect(toggleLocked).toHaveBeenCalled()
+    expect(toggleClosed).not.toHaveBeenCalled()
+})
+
+test('Unlocked and Closed: Open Gate button click calls toggleClosed', () => {
+    const toggleLocked = jest.fn()
+    const toggleClosed = jest.fn()
+    const container = render(<Controls locked={false} closed={true} toggleLocked={toggleLocked} toggleClosed={toggleClosed} />)
+    const closeButton = container.getByText(/Open Gate/i)
+    fireEvent.click(closeButton)
+    expect(toggleLocked).not.toHaveBeenCalled()
+    expect(toggleClosed).toHaveBeenCalled()
+})
