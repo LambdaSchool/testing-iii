@@ -1,6 +1,6 @@
 // Jest Snapshot v1, https://goo.gl/fbAQLP
 
-exports[`Dashboard renders correctly 1`] = `
+exports[`Dashboard renders correctly, and defaults gate to Unlocked and Open 1`] = `
 Object {
   "asFragment": [Function],
   "baseElement": <body>
