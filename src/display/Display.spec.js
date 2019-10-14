@@ -45,9 +45,16 @@ describe('<Display />', () => {
         // console.log("bbbb: ", wrapper1.container.firstChild.firstChild.childNodes[0].textContent)
         expect(actual).toEqual("green-led");
         expect(expected).toEqual("Unlocked");
-       
-        
+    });
 
+    it("when locked or closed use the red-led class", () => {
+        let wrapper1 = rtl.render(<Display />);
+        let expected = wrapper1.container.firstChild.firstChild.childNodes[0].textContent;
+        let actual = wrapper1.container.firstChild.firstChild.classList[0];
+        // console.log("aaaa: ", wrapper1.container.firstChild.firstChild.classList[1]);
+        // console.log("bbbb: ", wrapper1.container.firstChild.firstChild.childNodes[0].textContent)
+        expect(actual).not.toEqual("red-led");
+        expect(expected).not.toEqual("Locked");
     });
 
 
