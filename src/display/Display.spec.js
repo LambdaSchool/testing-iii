@@ -24,6 +24,9 @@ describe('<Display />', () => {
         let wrapper1 = rtl.render(<Display closed={true}/>);
         expect(wrapper1.queryByText(/Closed/i)).toBeInTheDocument();
     });
-
+    it("should displays 'Open' if the closed prop is false", () => {
+        let wrapper1 = rtl.render(<Display closed={false}/>);
+        expect(wrapper1.queryByText(/Open/i)).toBeInTheDocument();
+    });
     
 });
