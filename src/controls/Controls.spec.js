@@ -8,61 +8,35 @@ import Controls from "../controls/Controls";
 
 describe('<Controls />', () => {
 
-       it("provide buttons to toggle the closed and locked states", () => {
-        let wrapper1 = rtl.render(<Controls closed={true} locked={true} />);
-        // const {queryByText} = wrapper1
-        // console.log(wrapper1.getByName())
-        let btn = wrapper1.container.lastElementChild.querySelector("button");
-        // console.log("rrrrr: ",   queryByText("closed")) 
-        // console.log("bbbb: ", wrapper1.container.lastElementChild.querySelector("button").className)
-        // console.log("8888: ", rtl.fireEvent.click(btn))
+    it("provide buttons to toggle the closed and locked states", () => {
+        const wrapper = rtl.render(<Controls closed={true} locked={true} />);
+        const btn = wrapper.container.lastElementChild.querySelector("button");
         expect(rtl.fireEvent.click(btn)).toBeTruthy()
         expect(btn.className).toBe("toggle-btn");
-        expect(wrapper1).toBeTruthy();
+        expect(wrapper).toBeTruthy();
     });
 
 
     it("buttons' text changes to reflect the state the door will be in if clicked", () => {
-        let wrapper1 = rtl.render(<Controls />);
-        // const {queryByText} = wrapper1
-        // console.log(wrapper1.getByName())
-        let btn = wrapper1.container.lastElementChild.querySelector("button");
-        // let btn = wrapper1.container.lastElementChild.querySelector("button").textContent;
-        // console.log("rrrrr: ",   queryByText("closed")) 
-        // console.log("bbbb: ", wrapper1.container.lastElementChild.querySelector("button").innerText)
-        // console.log("8888: ", btn)
+        const wrapper = rtl.render(<Controls />);
+        const btn = wrapper.container.lastElementChild.querySelector("button");
         expect(rtl.fireEvent.click(btn))
         expect(btn.textContent).toBe("Lock Gate" || "Unock Gate");
-        // expect(btn.textContent).toBeInTheDocument().toBe(btn.textContent);;
     });
 
 
     it("the closed toggle button is disabled if the gate is locked", () => {
-        let wrapper1 = rtl.render(<Controls />);
-        // const {queryByText} = wrapper1
-        // console.log(wrapper1.getByName())
-        let btn = wrapper1.container.lastElementChild.querySelectorAll("button")[1];
-        // let btn = wrapper1.container.lastElementChild.querySelector("button").textContent;
-        // console.log("rrrrr: ",   queryByText("closed")) 
-        // console.log("bbbb: ", wrapper1.container.lastElementChild.querySelector("button").innerText)
-        // console.log("8888: ", btn)
+        const wrapper = rtl.render(<Controls />);
+        const btn = wrapper.container.lastElementChild.querySelectorAll("button")[1];
         expect(rtl.fireEvent.click(btn))
         expect(btn.disabled).not.toBeTruthy();
-        // expect(btn.textContent).toBeInTheDocument().toBe(btn.textContent);;
     });
 
 
     it("the closed toggle button is disabled if the gate is locked", () => {
-        let wrapper1 = rtl.render(<Controls />);
-        // const {queryByText} = wrapper1
-        // console.log(wrapper1.getByName())
-        let btn = wrapper1.container.lastElementChild.querySelectorAll("button")[0];
-        // let btn = wrapper1.container.lastElementChild.querySelector("button").textContent;
-        // console.log("rrrrr: ",   queryByText("closed")) 
-        // console.log("bbbb: ", wrapper1.container.lastElementChild.querySelector("button").innerText)
-        // console.log("8888: ", btn)
+        const wrapper = rtl.render(<Controls />);
+        const btn = wrapper.container.lastElementChild.querySelectorAll("button")[0];
         expect(rtl.fireEvent.click(btn))
         expect(btn.disabled).toBeTruthy();
-        // expect(btn.textContent).toBeInTheDocument().toBe(btn.textContent);;
     });
 });
