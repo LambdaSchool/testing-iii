@@ -28,5 +28,9 @@ describe('<Display />', () => {
         let wrapper1 = rtl.render(<Display closed={false}/>);
         expect(wrapper1.queryByText(/Open/i)).toBeInTheDocument();
     });
+    it("should displays 'Locked' if the locked prop is true and 'Unlocked' if otherwise", () => {
+        let wrapper1 = rtl.render(<Display locked={true}/>);
+        expect(wrapper1.queryByText(/Locked/i)).toBeInTheDocument();
+    });
     
 });
