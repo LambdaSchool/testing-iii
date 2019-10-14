@@ -10,13 +10,14 @@ import Display from './Display/';
 import Controls from "../controls/Controls";
 
 describe('<Display />', () => {
-    let wrapper1 = rtl.render(<Display />);
-    let wrapper2 = rtl.render(<Controls />);
-  it("should displays Unlocked if gate is Locked", () => {
-    expect(wrapper1.queryByText(/Unlocked/i)).toBeInTheDocument();
-    // expect(wrapper.queryByText(/Closed/i)).toBeInTheDocument();
-    rtl.fireEvent.click(wrapper2.queryByText(/Lock Gate/i));
-    expect(wrapper1.queryByText(/Locked/i)).toBeInTheDocument();
-    // rtl.fireEvent.click(wrapper.queryByText(/Unlock Gate/i));
-  });
+
+    it("should displays if gate is open/closed and if it is locked/unlocked", () => {
+        let wrapper1 = rtl.render(<Display />);
+        let wrapper2 = rtl.render(<Controls />);
+        expect(wrapper1.queryByText(/Unlocked/i)).toBeInTheDocument();
+        rtl.fireEvent.click(wrapper2.queryByText(/Lock Gate/i));
+        expect(wrapper1.queryByText(/Locked/i)).toBeInTheDocument();
+        // expect(wrapper1.queryByText(/UnLocked/i)).not.toBeInTheDocument();
+    });
+
 });
