@@ -1,8 +1,7 @@
 // Test away
 import React from 'react';
-import { render, fireEvent } from 'react-testing-library';
+import { render, fireEvent, wait } from 'react-testing-library';
 import Dashboard from './Dashboard';
-import Controls from '../controls/Controls'
 
 
 describe("Dashboard Testing", () => {
