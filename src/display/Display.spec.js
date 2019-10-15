@@ -13,8 +13,9 @@ test('diplay close to open', () => {
     const lockedMock = jest.fn()
     const {getByText} = render(
     <Display locked={lockedMock}/>)
-    const toggleBtn = getByText(/closed/i)
+    const toggleBtn = getByText(/locked/i)
     //click button
     fireEvent.click(toggleBtn)
-    getByText(/open/i)
+    getByText(/locked/i)
 })
+

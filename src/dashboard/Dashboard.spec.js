@@ -21,4 +21,23 @@ test('toogle button from close to open', () => {
     //click button
     fireEvent.click(toggleBtn)
     getByText(/open gate/i)
+
+    
+    const toggleBtnC = getByText(/open gate/i)
+    //click button
+    fireEvent.click(toggleBtnC)
+    getByText(/close gate/i)
+})
+
+test('toggle lock to unlock', () => {
+    const {getByText} = render(<Dashboard/>)
+    const closeBtn = getByText(/close gate/i)
+    //click button
+    fireEvent.click(closeBtn)
+
+    
+    const lockBtn = getByText(/lock gate/i)
+    //click button
+    fireEvent.click(lockBtn)
+    getByText(/unlock gate/i)
 })
