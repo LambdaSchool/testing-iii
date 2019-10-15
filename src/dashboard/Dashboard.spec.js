@@ -9,8 +9,16 @@ test('it renders correctly', () => {
     expect(render(<Dashboard />)).toMatchSnapshot()
 })
 
-// describe('<Dashboard />', () => {
-//     const tree = renderer.create(<Dashboard />).toJSON();
+test('default Unlocke and open', () => {
+    const  {getByText} = render(<Dashboard/>)
+    getByText('Unlocked')
+    getByText('Open')
+})
 
-//     expect(tree).toMatchSnapshot()
-// })
+test('toogle button from close to open', () => {
+    const {getByText} = render(<Dashboard/>)
+    const toggleBtn = getByText(/close gate/i)
+    //click button
+    fireEvent.click(toggleBtn)
+    getByText(/open gate/i)
+})
