@@ -8,3 +8,13 @@ import { render, fireEvent } from "@testing-library/react";
 test('it renders correctly', () => {
     expect(render(<Display />)).toMatchSnapshot()
 })
+
+test('diplay close to open', () => {
+    const lockedMock = jest.fn()
+    const {getByText} = render(
+    <Display locked={lockedMock}/>)
+    const toggleBtn = getByText(/closed/i)
+    //click button
+    fireEvent.click(toggleBtn)
+    getByText(/open/i)
+})
