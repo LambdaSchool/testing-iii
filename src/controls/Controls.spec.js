@@ -5,18 +5,18 @@ import Controls from './Controls';
 import * as rtl from "@testing-library/react";
 import "@testing-library/jest-dom/extend-expect";
 
-test("Render the Control Panel", async () => {
+test("Render the Controls Panel", async () => {
     const wrapper = rtl.render(<Controls />);
-    await wrapper.findAllByText(/controls panel/i);
+    await wrapper.findAllByText(/controls/i);
     
-    const element = wrapper.getByText(/controls panel/i);
+    const element = wrapper.getByText(/controls/i);
 
     expect(element).toBeVisible();
 });
 
 test('Toggle Button', async () => {
     const wrapper = rtl.render(<Controls />);
-    await wrapper.findByLabelText(/btn/i);
+    await wrapper.findByText(/button/i);
 
     const open = wrapper.getByText(/open/i)
     const closed = wrapper.getByText(/closed/i)
@@ -36,5 +36,5 @@ test('Toggle Button', async () => {
                     rtl.fireEvent.click(unlocked)
     })
 
-    expect(wrapper.queryByAllText(/btn/i)).toBeNull()
+    expect(wrapper.queryByAllText(/button/i)).toBeNull()
 })

@@ -8,7 +8,7 @@ afterEach(rtl.cleanup);
 
 test('Is locked', async () => {
     const wrapper = rtl.render(<Dashboard /> );
-    await wrapper.findAllByAltText(/locked/i);
+    await wrapper.findAllByText(/locked/i);
 
     const locked = wrapper.getByText(/locked/i)
 
@@ -21,7 +21,7 @@ test('Is locked', async () => {
 
 test('Is closed', async () => {
     const wrapper = rtl.render(<Dashboard />);
-    await wrapper.findAllByAltText(/closed/i);
+    await wrapper.findAllByText(/closed/i);
 
     const closed = wrapper.getByText(/closed/i)
 
