@@ -5,7 +5,7 @@ import { render } from 'react-testing-library';
 
 import Display from './Display';
 
-test ('Display renders correctly', () => {
+test ('Display snapshot', () => {
     expect(render(<Display/>)).toMatchSnapshot();
 });
 
