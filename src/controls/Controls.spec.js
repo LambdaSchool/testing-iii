@@ -63,8 +63,6 @@ test('Lock Gate', () => {
 })
 
 
-
-
 test('open Gate', () => {
     const toggleOpenMock = jest.fn();
     const {getByText} = render(<Controls toggleClosed={toggleOpenMock} closed={true}/>)
