@@ -9,3 +9,5 @@ test ('Display renders correctly', () => {
     expect(render(<Display/>)).toMatchSnapshot();
 });
 
+
+

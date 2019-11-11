@@ -1,6 +1,6 @@
 // Jest Snapshot v1, https://goo.gl/fbAQLP
 
-exports[`Display renders correctly 1`] = `
+exports[`Dashboard snapshot 1`] = `
 Object {
   "asFragment": [Function],
   "baseElement": <body>
@@ -24,12 +24,14 @@ Object {
       >
         <button
           class="toggle-btn"
+          data-testid="toggle-locked"
           disabled=""
         >
           Lock Gate
         </button>
         <button
           class="toggle-btn"
+          data-testid="toggle-closed"
         >
           Close Gate
         </button>
@@ -56,12 +58,14 @@ Object {
     >
       <button
         class="toggle-btn"
+        data-testid="toggle-locked"
         disabled=""
       >
         Lock Gate
       </button>
       <button
         class="toggle-btn"
+        data-testid="toggle-closed"
       >
         Close Gate
       </button>
