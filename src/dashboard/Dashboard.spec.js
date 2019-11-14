@@ -14,7 +14,7 @@ test("gate default is unlocked and open", () => {
 
     expect(lockBtn.disabled).toBe(true);
     expect(openBtn.disabled).toBe(false);
-})
+});
 
 test("gate opens", () => {
     const { getByText, findByText } = render(<Dashboard/>);
@@ -33,4 +33,4 @@ test("gate cannot be closed or open if it is locked", () => {
 
     const openBtn = dashboard.getByText(/open gate/i);
     fireEvent.click(openBtn);
-})
+});
