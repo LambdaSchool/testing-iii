@@ -1,37 +1,47 @@
 import React from "react";
 import * as rtl from "@testing-library/react";
 import "@testing-library/jest-dom/extend-expect";
-import Display from './Display';
-
-
+import Display from "./Display";
 
 // Test away!
-// test lockedClass & closedClass functions 
+// test lockedClass & closedClass functions
 
+test("Display: Renders", async () => {
+  const wrapper = rtl.render(<Display />);
+  expect(wrapper).toBeDefined();
+});
 
-test('Display: Renders', async () => {
-    const wrapper = rtl.render(<Display />);
-    expect(wrapper).toBeDefined();
-    
-})
+test("Display: test state", async () => {
+  const wrapper = rtl.render(<Display />);
 
-test('Display: test state', async () => {
-    const wrapper = rtl.render(<Display />);
+  const lockedClass = wrapper.findAllByDisplayValue(/lockedClass/i);
+  expect(lockedClass).toBeTruthy();
+  const closedClass = wrapper.findAllByDisplayValue(/closedClass/i);
+  expect(closedClass).toBeTruthy();
+});
 
-    const lockedClass = wrapper.findAllByDisplayValue(/lockedClass/i);
-    expect(lockedClass).toBeTruthy();
-    const closedClass = wrapper.findAllByDisplayValue(/closedClass/i);
-    expect(closedClass).toBeTruthy();
-    
-})
+test("Display: closed & locked == false", async () => {
+  const wrapper = rtl.render(<Display />);
 
-test('Display: closed & locked == false', async () => {
-    const wrapper = rtl.render(<Display />);
+  // in this case toBeTruthy == closed: false
+  const closed = wrapper.findAllByDisplayValue(/closed/i);
+  expect(closed).toBeTruthy();
+  const locked = wrapper.findAllByDisplayValue(/locked/i);
+  expect(locked).toBeTruthy();
+});
 
-    // in this case toBeTruthy == closed: false
-    const closed = wrapper.findAllByDisplayValue(/closed/i);
-    expect(closed).toBeTruthy();
-    const locked = wrapper.findAllByDisplayValue(/locked/i);
-    expect(locked).toBeTruthy();
-    
-})
+test("test classes", async () => {
+  const wrapper = rtl.render(<Display />);
+
+  const closed = wrapper.findAllByDisplayValue(/closed/i);
+  const locked = wrapper.findAllByDisplayValue(/locked/i);
+
+  const lockedClass = wrapper.findAllByDisplayValue(/lockedClass/i);
+  const closedClass = wrapper.findAllByDisplayValue(/closedClass/i);
+
+//   expect(closed).toHaveClass("red-led");
+//   expect(locked).toHaveClass("red-led");
+
+// expect(closedClass).toHaveClass('.red-led');
+
+});
