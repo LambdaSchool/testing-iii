@@ -11,37 +11,34 @@ test("Display: Renders", async () => {
   expect(wrapper).toBeDefined();
 });
 
-test("Display: test state", async () => {
-  const wrapper = rtl.render(<Display />);
+test("Display: red-led class when locked", async () => {
+  const wrapper = rtl.render(<Display locked={true} />);
 
-  const lockedClass = wrapper.findAllByDisplayValue(/lockedClass/i);
-  expect(lockedClass).toBeTruthy();
-  const closedClass = wrapper.findAllByDisplayValue(/closedClass/i);
-  expect(closedClass).toBeTruthy();
+  const lockedDisplay = wrapper.getByText(/locked/i);
+  expect(lockedDisplay).toHaveClass("red-led");
+  expect(lockedDisplay).toHaveTextContent(/locked/i);
 });
 
-test("Display: closed & locked == false", async () => {
-  const wrapper = rtl.render(<Display />);
+test("Display: green-led class when unlocked", async () => {
+  const wrapper = rtl.render(<Display locked={false} />);
 
-  // in this case toBeTruthy == closed: false
-  const closed = wrapper.findAllByDisplayValue(/closed/i);
-  expect(closed).toBeTruthy();
-  const locked = wrapper.findAllByDisplayValue(/locked/i);
-  expect(locked).toBeTruthy();
+  const unlockedDisplay = wrapper.getByText(/unlocked/i);
+  expect(unlockedDisplay).toHaveClass("green-led");
+  expect(unlockedDisplay).toHaveTextContent(/unlocked/i);
 });
 
-test("test classes", async () => {
-  const wrapper = rtl.render(<Display />);
+test("Display: red-led when closed", async () => {
+  const wrapper = rtl.render(<Display closed={true} />);
 
-  const closed = wrapper.findAllByDisplayValue(/closed/i);
-  const locked = wrapper.findAllByDisplayValue(/locked/i);
+  const closedDisplay = wrapper.getByText(/closed/i);
+  expect(closedDisplay).toHaveClass("red-led");
+  expect(closedDisplay).toHaveTextContent(/closed/i);
+});
 
-  const lockedClass = wrapper.findAllByDisplayValue(/lockedClass/i);
-  const closedClass = wrapper.findAllByDisplayValue(/closedClass/i);
+test("Display: green-led when open", async () => {
+  const wrapper = rtl.render(<Display closed={false} />);
 
-//   expect(closed).toHaveClass("red-led");
-//   expect(locked).toHaveClass("red-led");
-
-// expect(closedClass).toHaveClass('.red-led');
-
+  const openDisplay = wrapper.getByText(/open/i);
+  expect(openDisplay).toHaveClass("green-led");
+  expect(openDisplay).toHaveTextContent(/open/i);
 });
