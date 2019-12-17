@@ -1,7 +1,7 @@
 // Test away!
 import React from "react";
 import { render, fireEvent } from "@testing-library/react";
-import Controls from "../controls/Controls";
+import Controls from "./Controls";
 
 test("If locked, can't be opened or closed ", () => {
     const toggle = jest.fn();
