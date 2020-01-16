@@ -24,7 +24,6 @@ describe('<Controls />', () => {
     //If gate is locked, the button doesn't fire and text doesn't change
     fireEvent.click(closeBtn.getByText(/open gate/i));
     expect(toggleClosed).not.toHaveBeenCalled();
-    closeBtn.rerender(<button onClick={toggleClosed} disabled={disabled}>{closeText}</button>);
     expect(closeBtn.getByText(/open gate/i)).toBeTruthy();
 
     //Unlock gate event fires and text changes
@@ -53,7 +52,6 @@ describe('<Controls />', () => {
     //If gate is open, the button doesn't fire and text doesn't change
     fireEvent.click(lockBtn.getByText(/lock gate/i));
     expect(toggleLocked).not.toHaveBeenCalled();
-    lockBtn.rerender(<button onClick={toggleLocked} disabled={disabled}>{lockText}</button>);
     expect(lockBtn.getByText(/lock gate/i)).toBeTruthy();
 
     //Close gate event fires and text changes
