@@ -29,7 +29,7 @@ describe('<Display />', () => {
   });
 
   it('should display "locked" when locked is true', () => {
-    const { getByText, queryByText } = render(<Display locked={true}/>);
+    const { getByText } = render(<Display locked={true}/>);
     expect(getByText(/locked/i)).toBeTruthy();
   });
 
