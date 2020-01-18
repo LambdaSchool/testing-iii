@@ -10,11 +10,10 @@ describe('<Dashboard />', () => {
   });
 
   it('shows display and controls', () => {
-    const { getByText, queryByText } = render(<Dashboard />);
+    const { getByText } = render(<Dashboard />);
     expect(getByText(/unlocked/i)).toBeTruthy();
     expect(getByText(/open/i)).toBeTruthy();
     expect(getByText(/lock gate/i)).toBeTruthy();
-    expect(getByText(/close gate/i)).toBeTruthy();
-    expect(queryByText(/unloccked/i)).toBeFalsy();
+    expect(getByText(/close gate/i)).toBeTruthy()
   })
 });

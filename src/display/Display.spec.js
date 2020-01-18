@@ -10,17 +10,15 @@ describe('<Display />', () => {
   });
 
   it('should display "open" when closed is false', () => {
-    const { getByText, queryByText } = render(<Display closed={false}/>);
+    const { getByText } = render(<Display closed={false}/>);
     expect(getByText(/unlocked/i)).toBeTruthy();
     expect(getByText(/open/i)).toBeTruthy();
-    expect(queryByText(/closed/i)).toBeFalsy();
   });
 
   it('should display "closed" when closed is true', () => {
-    const { getByText, queryByText } = render(<Display closed={true}/>);
+    const { getByText } = render(<Display closed={true}/>);
     expect(getByText(/unlocked/i)).toBeTruthy();
     expect(getByText(/closed/i)).toBeTruthy();
-    expect(queryByText(/open/i)).toBeFalsy();
   });
 
   it('should display "unlocked" when locked is false', () => {
