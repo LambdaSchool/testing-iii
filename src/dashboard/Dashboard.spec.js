@@ -4,7 +4,7 @@ import { render } from '@testing-library/react';
 import Dashboard from './Dashboard';
 
 describe('<Dashboard />', () => {
-  it('matches snapshot', () => {
+  it('should match snapshot', () => {
     const wrapper = renderer.create(<Dashboard />).toJSON();
     expect(wrapper).toMatchSnapshot();
   });
@@ -14,6 +14,6 @@ describe('<Dashboard />', () => {
     expect(getByText(/unlocked/i)).toBeTruthy();
     expect(getByText(/open/i)).toBeTruthy();
     expect(getByText(/lock gate/i)).toBeTruthy();
-    expect(getByText(/close gate/i)).toBeTruthy()
+    expect(getByText(/close gate/i)).toBeTruthy();
   })
 });

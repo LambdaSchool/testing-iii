@@ -16,3 +16,20 @@ exports[`<Display /> matches snapshot 1`] = `
   </div>
 </div>
 `;
+
+exports[`<Display /> should match snapshot 1`] = `
+<div
+  className="display panel"
+>
+  <div
+    className="led green-led"
+  >
+    Unlocked
+  </div>
+  <div
+    className="led green-led"
+  >
+    Open
+  </div>
+</div>
+`;

@@ -5,7 +5,7 @@ import Controls from './Controls';
 afterEach(cleanup);
 
 describe('<Controls />', () => {
-  it('matches snapshot', () => {
+  it('should match snapshot', () => {
     const wrapper = renderer.create(<Controls />).toJSON();
     expect(wrapper).toMatchSnapshot();
   });

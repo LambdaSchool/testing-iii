@@ -4,7 +4,7 @@ import { render } from '@testing-library/react';
 import Display from './Display';
 
 describe('<Display />', () => {
-  it('matches snapshot', () => {
+  it('should match snapshot', () => {
     const wrapper = renderer.create(<Display />).toJSON();
     expect(wrapper).toMatchSnapshot();
   });
