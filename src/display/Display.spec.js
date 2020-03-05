@@ -1,4 +1,4 @@
-// Test away!
+
 import React from 'react';
 import {render, clickEvent, cleanup} from 'react-testing-library';
 import 'jest-dom/extend-expect';
@@ -57,3 +57,4 @@ describe('Tests for Display Component', () => {
         expect(open).toHaveClass("green-led");
     });
 });
+
